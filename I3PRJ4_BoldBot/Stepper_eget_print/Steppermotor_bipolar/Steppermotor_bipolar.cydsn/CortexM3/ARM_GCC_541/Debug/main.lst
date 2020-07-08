@@ -1,0 +1,942 @@
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.stepper_init,"ax",%progbits
+  20              		.align	2
+  21              		.global	stepper_init
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	stepper_init, %function
+  25              	stepper_init:
+  26              	.LFB64:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** void stepper_forward(uint8 steps);
+  14:main.c        **** void stepper_reverse(uint8 steps);
+  15:main.c        **** int main(void)
+  16:main.c        **** {
+  17:main.c        ****     //CyGlobalIntEnable; /* Enable global interrupts. */
+  18:main.c        **** 
+  19:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  20:main.c        **** 
+  21:main.c        ****     for(;;)
+  22:main.c        ****     {
+  23:main.c        ****         CyDelay(5000);
+  24:main.c        ****       stepper_forward(20);
+  25:main.c        ****       
+  26:main.c        ****     }
+  27:main.c        **** }
+  28:main.c        **** 
+  29:main.c        **** void stepper_init(){
+  28              		.loc 1 29 0
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 2
+
+
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33 0000 7047     		bx	lr
+  34              		.cfi_endproc
+  35              	.LFE64:
+  36              		.size	stepper_init, .-stepper_init
+  37 0002 00BF     		.section	.text.stepper_forward,"ax",%progbits
+  38              		.align	2
+  39              		.global	stepper_forward
+  40              		.thumb
+  41              		.thumb_func
+  42              		.type	stepper_forward, %function
+  43              	stepper_forward:
+  44              	.LFB65:
+  30:main.c        **** 
+  31:main.c        **** 
+  32:main.c        **** }
+  33:main.c        **** 
+  34:main.c        **** void stepper_forward(uint8 steps) {
+  45              		.loc 1 34 0
+  46              		.cfi_startproc
+  47              		@ args = 0, pretend = 0, frame = 0
+  48              		@ frame_needed = 0, uses_anonymous_args = 0
+  49              	.LVL0:
+  50              		.loc 1 34 0
+  51 0000 08B5     		push	{r3, lr}
+  52              		.cfi_def_cfa_offset 8
+  53              		.cfi_offset 3, -8
+  54              		.cfi_offset 14, -4
+  35:main.c        **** 
+  36:main.c        ****     Steps_Write(steps);
+  55              		.loc 1 36 0
+  56 0002 FFF7FEFF 		bl	Steps_Write
+  57              	.LVL1:
+  37:main.c        ****     Stepper_control_Write(0b00000001);
+  58              		.loc 1 37 0
+  59 0006 0120     		movs	r0, #1
+  60 0008 FFF7FEFF 		bl	Stepper_control_Write
+  61              	.LVL2:
+  38:main.c        ****     CyDelay(10);
+  62              		.loc 1 38 0
+  63 000c 0A20     		movs	r0, #10
+  64 000e FFF7FEFF 		bl	CyDelay
+  65              	.LVL3:
+  39:main.c        ****     Stepper_control_Write(0b00000000);
+  66              		.loc 1 39 0
+  67 0012 0020     		movs	r0, #0
+  68 0014 FFF7FEFF 		bl	Stepper_control_Write
+  69              	.LVL4:
+  70 0018 08BD     		pop	{r3, pc}
+  71              		.cfi_endproc
+  72              	.LFE65:
+  73              		.size	stepper_forward, .-stepper_forward
+  74 001a 00BF     		.section	.text.main,"ax",%progbits
+  75              		.align	2
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 3
+
+
+  76              		.global	main
+  77              		.thumb
+  78              		.thumb_func
+  79              		.type	main, %function
+  80              	main:
+  81              	.LFB63:
+  16:main.c        ****     //CyGlobalIntEnable; /* Enable global interrupts. */
+  82              		.loc 1 16 0
+  83              		.cfi_startproc
+  84              		@ Volatile: function does not return.
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87 0000 08B5     		push	{r3, lr}
+  88              		.cfi_def_cfa_offset 8
+  89              		.cfi_offset 3, -8
+  90              		.cfi_offset 14, -4
+  91              	.L5:
+  23:main.c        ****       stepper_forward(20);
+  92              		.loc 1 23 0 discriminator 1
+  93 0002 41F28830 		movw	r0, #5000
+  94 0006 FFF7FEFF 		bl	CyDelay
+  95              	.LVL5:
+  24:main.c        ****       
+  96              		.loc 1 24 0 discriminator 1
+  97 000a 1420     		movs	r0, #20
+  98 000c FFF7FEFF 		bl	stepper_forward
+  99              	.LVL6:
+ 100 0010 F7E7     		b	.L5
+ 101              		.cfi_endproc
+ 102              	.LFE63:
+ 103              		.size	main, .-main
+ 104 0012 00BF     		.section	.text.stepper_reverse,"ax",%progbits
+ 105              		.align	2
+ 106              		.global	stepper_reverse
+ 107              		.thumb
+ 108              		.thumb_func
+ 109              		.type	stepper_reverse, %function
+ 110              	stepper_reverse:
+ 111              	.LFB66:
+  40:main.c        **** 
+  41:main.c        **** }
+  42:main.c        **** 
+  43:main.c        **** void stepper_reverse(uint8 steps) {
+ 112              		.loc 1 43 0
+ 113              		.cfi_startproc
+ 114              		@ args = 0, pretend = 0, frame = 0
+ 115              		@ frame_needed = 0, uses_anonymous_args = 0
+ 116              	.LVL7:
+ 117 0000 08B5     		push	{r3, lr}
+ 118              		.cfi_def_cfa_offset 8
+ 119              		.cfi_offset 3, -8
+ 120              		.cfi_offset 14, -4
+  44:main.c        **** 
+  45:main.c        ****     Steps_Write(steps);
+ 121              		.loc 1 45 0
+ 122 0002 FFF7FEFF 		bl	Steps_Write
+ 123              	.LVL8:
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 4
+
+
+  46:main.c        ****     Stepper_control_Write(0b00000011);
+ 124              		.loc 1 46 0
+ 125 0006 0320     		movs	r0, #3
+ 126 0008 FFF7FEFF 		bl	Stepper_control_Write
+ 127              	.LVL9:
+  47:main.c        ****     CyDelay(10);
+ 128              		.loc 1 47 0
+ 129 000c 0A20     		movs	r0, #10
+ 130 000e FFF7FEFF 		bl	CyDelay
+ 131              	.LVL10:
+  48:main.c        ****     Stepper_control_Write(0b00000010);
+ 132              		.loc 1 48 0
+ 133 0012 0220     		movs	r0, #2
+ 134 0014 FFF7FEFF 		bl	Stepper_control_Write
+ 135              	.LVL11:
+ 136 0018 08BD     		pop	{r3, pc}
+ 137              		.cfi_endproc
+ 138              	.LFE66:
+ 139              		.size	stepper_reverse, .-stepper_reverse
+ 140 001a 00BF     		.text
+ 141              	.Letext0:
+ 142              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 143              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 144              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 145              		.file 5 "Generated_Source\\PSoC5/Steps.h"
+ 146              		.file 6 "Generated_Source\\PSoC5/Stepper_control.h"
+ 147              		.file 7 "Generated_Source\\PSoC5/CyLib.h"
+ 148              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
+ 149              		.section	.debug_info,"",%progbits
+ 150              	.Ldebug_info0:
+ 151 0000 F4010000 		.4byte	0x1f4
+ 152 0004 0400     		.2byte	0x4
+ 153 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 154 000a 04       		.byte	0x4
+ 155 000b 01       		.uleb128 0x1
+ 156 000c 47000000 		.4byte	.LASF23
+ 157 0010 0C       		.byte	0xc
+ 158 0011 3B000000 		.4byte	.LASF24
+ 159 0015 28010000 		.4byte	.LASF25
+ 160 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 161 001d 00000000 		.4byte	0
+ 162 0021 00000000 		.4byte	.Ldebug_line0
+ 163 0025 02       		.uleb128 0x2
+ 164 0026 01       		.byte	0x1
+ 165 0027 06       		.byte	0x6
+ 166 0028 D4010000 		.4byte	.LASF0
+ 167 002c 02       		.uleb128 0x2
+ 168 002d 01       		.byte	0x1
+ 169 002e 08       		.byte	0x8
+ 170 002f 8E010000 		.4byte	.LASF1
+ 171 0033 02       		.uleb128 0x2
+ 172 0034 02       		.byte	0x2
+ 173 0035 05       		.byte	0x5
+ 174 0036 FC010000 		.4byte	.LASF2
+ 175 003a 02       		.uleb128 0x2
+ 176 003b 02       		.byte	0x2
+ 177 003c 07       		.byte	0x7
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 5
+
+
+ 178 003d 0E000000 		.4byte	.LASF3
+ 179 0041 03       		.uleb128 0x3
+ 180 0042 EC010000 		.4byte	.LASF9
+ 181 0046 02       		.byte	0x2
+ 182 0047 3F       		.byte	0x3f
+ 183 0048 4C000000 		.4byte	0x4c
+ 184 004c 02       		.uleb128 0x2
+ 185 004d 04       		.byte	0x4
+ 186 004e 05       		.byte	0x5
+ 187 004f B7010000 		.4byte	.LASF4
+ 188 0053 02       		.uleb128 0x2
+ 189 0054 04       		.byte	0x4
+ 190 0055 07       		.byte	0x7
+ 191 0056 FF000000 		.4byte	.LASF5
+ 192 005a 02       		.uleb128 0x2
+ 193 005b 08       		.byte	0x8
+ 194 005c 05       		.byte	0x5
+ 195 005d 00000000 		.4byte	.LASF6
+ 196 0061 02       		.uleb128 0x2
+ 197 0062 08       		.byte	0x8
+ 198 0063 07       		.byte	0x7
+ 199 0064 11010000 		.4byte	.LASF7
+ 200 0068 04       		.uleb128 0x4
+ 201 0069 04       		.byte	0x4
+ 202 006a 05       		.byte	0x5
+ 203 006b 696E7400 		.ascii	"int\000"
+ 204 006f 02       		.uleb128 0x2
+ 205 0070 04       		.byte	0x4
+ 206 0071 07       		.byte	0x7
+ 207 0072 21000000 		.4byte	.LASF8
+ 208 0076 03       		.uleb128 0x3
+ 209 0077 06020000 		.4byte	.LASF10
+ 210 007b 03       		.byte	0x3
+ 211 007c 2C       		.byte	0x2c
+ 212 007d 41000000 		.4byte	0x41
+ 213 0081 05       		.uleb128 0x5
+ 214 0082 F9000000 		.4byte	.LASF11
+ 215 0086 04       		.byte	0x4
+ 216 0087 E401     		.2byte	0x1e4
+ 217 0089 2C000000 		.4byte	0x2c
+ 218 008d 02       		.uleb128 0x2
+ 219 008e 04       		.byte	0x4
+ 220 008f 04       		.byte	0x4
+ 221 0090 F6010000 		.4byte	.LASF12
+ 222 0094 02       		.uleb128 0x2
+ 223 0095 08       		.byte	0x8
+ 224 0096 04       		.byte	0x4
+ 225 0097 C0010000 		.4byte	.LASF13
+ 226 009b 02       		.uleb128 0x2
+ 227 009c 01       		.byte	0x1
+ 228 009d 08       		.byte	0x8
+ 229 009e 9C010000 		.4byte	.LASF14
+ 230 00a2 02       		.uleb128 0x2
+ 231 00a3 08       		.byte	0x8
+ 232 00a4 04       		.byte	0x4
+ 233 00a5 E0010000 		.4byte	.LASF15
+ 234 00a9 02       		.uleb128 0x2
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 6
+
+
+ 235 00aa 04       		.byte	0x4
+ 236 00ab 07       		.byte	0x7
+ 237 00ac 0E020000 		.4byte	.LASF16
+ 238 00b0 06       		.uleb128 0x6
+ 239 00b1 2E000000 		.4byte	.LASF26
+ 240 00b5 01       		.byte	0x1
+ 241 00b6 1D       		.byte	0x1d
+ 242 00b7 00000000 		.4byte	.LFB64
+ 243 00bb 02000000 		.4byte	.LFE64-.LFB64
+ 244 00bf 01       		.uleb128 0x1
+ 245 00c0 9C       		.byte	0x9c
+ 246 00c1 07       		.uleb128 0x7
+ 247 00c2 D5000000 		.4byte	.LASF17
+ 248 00c6 01       		.byte	0x1
+ 249 00c7 22       		.byte	0x22
+ 250 00c8 00000000 		.4byte	.LFB65
+ 251 00cc 1A000000 		.4byte	.LFE65-.LFB65
+ 252 00d0 01       		.uleb128 0x1
+ 253 00d1 9C       		.byte	0x9c
+ 254 00d2 24010000 		.4byte	0x124
+ 255 00d6 08       		.uleb128 0x8
+ 256 00d7 17020000 		.4byte	.LASF19
+ 257 00db 01       		.byte	0x1
+ 258 00dc 22       		.byte	0x22
+ 259 00dd 81000000 		.4byte	0x81
+ 260 00e1 00000000 		.4byte	.LLST0
+ 261 00e5 09       		.uleb128 0x9
+ 262 00e6 06000000 		.4byte	.LVL1
+ 263 00ea D6010000 		.4byte	0x1d6
+ 264 00ee 0A       		.uleb128 0xa
+ 265 00ef 0C000000 		.4byte	.LVL2
+ 266 00f3 E1010000 		.4byte	0x1e1
+ 267 00f7 01010000 		.4byte	0x101
+ 268 00fb 0B       		.uleb128 0xb
+ 269 00fc 01       		.uleb128 0x1
+ 270 00fd 50       		.byte	0x50
+ 271 00fe 01       		.uleb128 0x1
+ 272 00ff 31       		.byte	0x31
+ 273 0100 00       		.byte	0
+ 274 0101 0A       		.uleb128 0xa
+ 275 0102 12000000 		.4byte	.LVL3
+ 276 0106 EC010000 		.4byte	0x1ec
+ 277 010a 14010000 		.4byte	0x114
+ 278 010e 0B       		.uleb128 0xb
+ 279 010f 01       		.uleb128 0x1
+ 280 0110 50       		.byte	0x50
+ 281 0111 01       		.uleb128 0x1
+ 282 0112 3A       		.byte	0x3a
+ 283 0113 00       		.byte	0
+ 284 0114 0C       		.uleb128 0xc
+ 285 0115 18000000 		.4byte	.LVL4
+ 286 0119 E1010000 		.4byte	0x1e1
+ 287 011d 0B       		.uleb128 0xb
+ 288 011e 01       		.uleb128 0x1
+ 289 011f 50       		.byte	0x50
+ 290 0120 01       		.uleb128 0x1
+ 291 0121 30       		.byte	0x30
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 7
+
+
+ 292 0122 00       		.byte	0
+ 293 0123 00       		.byte	0
+ 294 0124 0D       		.uleb128 0xd
+ 295 0125 42000000 		.4byte	.LASF27
+ 296 0129 01       		.byte	0x1
+ 297 012a 0F       		.byte	0xf
+ 298 012b 68000000 		.4byte	0x68
+ 299 012f 00000000 		.4byte	.LFB63
+ 300 0133 12000000 		.4byte	.LFE63-.LFB63
+ 301 0137 01       		.uleb128 0x1
+ 302 0138 9C       		.byte	0x9c
+ 303 0139 62010000 		.4byte	0x162
+ 304 013d 0A       		.uleb128 0xa
+ 305 013e 0A000000 		.4byte	.LVL5
+ 306 0142 EC010000 		.4byte	0x1ec
+ 307 0146 52010000 		.4byte	0x152
+ 308 014a 0B       		.uleb128 0xb
+ 309 014b 01       		.uleb128 0x1
+ 310 014c 50       		.byte	0x50
+ 311 014d 03       		.uleb128 0x3
+ 312 014e 0A       		.byte	0xa
+ 313 014f 8813     		.2byte	0x1388
+ 314 0151 00       		.byte	0
+ 315 0152 0C       		.uleb128 0xc
+ 316 0153 10000000 		.4byte	.LVL6
+ 317 0157 C1000000 		.4byte	0xc1
+ 318 015b 0B       		.uleb128 0xb
+ 319 015c 01       		.uleb128 0x1
+ 320 015d 50       		.byte	0x50
+ 321 015e 01       		.uleb128 0x1
+ 322 015f 44       		.byte	0x44
+ 323 0160 00       		.byte	0
+ 324 0161 00       		.byte	0
+ 325 0162 07       		.uleb128 0x7
+ 326 0163 7E010000 		.4byte	.LASF18
+ 327 0167 01       		.byte	0x1
+ 328 0168 2B       		.byte	0x2b
+ 329 0169 00000000 		.4byte	.LFB66
+ 330 016d 1A000000 		.4byte	.LFE66-.LFB66
+ 331 0171 01       		.uleb128 0x1
+ 332 0172 9C       		.byte	0x9c
+ 333 0173 C5010000 		.4byte	0x1c5
+ 334 0177 08       		.uleb128 0x8
+ 335 0178 17020000 		.4byte	.LASF19
+ 336 017c 01       		.byte	0x1
+ 337 017d 2B       		.byte	0x2b
+ 338 017e 81000000 		.4byte	0x81
+ 339 0182 21000000 		.4byte	.LLST1
+ 340 0186 09       		.uleb128 0x9
+ 341 0187 06000000 		.4byte	.LVL8
+ 342 018b D6010000 		.4byte	0x1d6
+ 343 018f 0A       		.uleb128 0xa
+ 344 0190 0C000000 		.4byte	.LVL9
+ 345 0194 E1010000 		.4byte	0x1e1
+ 346 0198 A2010000 		.4byte	0x1a2
+ 347 019c 0B       		.uleb128 0xb
+ 348 019d 01       		.uleb128 0x1
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 8
+
+
+ 349 019e 50       		.byte	0x50
+ 350 019f 01       		.uleb128 0x1
+ 351 01a0 33       		.byte	0x33
+ 352 01a1 00       		.byte	0
+ 353 01a2 0A       		.uleb128 0xa
+ 354 01a3 12000000 		.4byte	.LVL10
+ 355 01a7 EC010000 		.4byte	0x1ec
+ 356 01ab B5010000 		.4byte	0x1b5
+ 357 01af 0B       		.uleb128 0xb
+ 358 01b0 01       		.uleb128 0x1
+ 359 01b1 50       		.byte	0x50
+ 360 01b2 01       		.uleb128 0x1
+ 361 01b3 3A       		.byte	0x3a
+ 362 01b4 00       		.byte	0
+ 363 01b5 0C       		.uleb128 0xc
+ 364 01b6 18000000 		.4byte	.LVL11
+ 365 01ba E1010000 		.4byte	0x1e1
+ 366 01be 0B       		.uleb128 0xb
+ 367 01bf 01       		.uleb128 0x1
+ 368 01c0 50       		.byte	0x50
+ 369 01c1 01       		.uleb128 0x1
+ 370 01c2 32       		.byte	0x32
+ 371 01c3 00       		.byte	0
+ 372 01c4 00       		.byte	0
+ 373 01c5 0E       		.uleb128 0xe
+ 374 01c6 C7010000 		.4byte	.LASF28
+ 375 01ca 08       		.byte	0x8
+ 376 01cb 1207     		.2byte	0x712
+ 377 01cd D1010000 		.4byte	0x1d1
+ 378 01d1 0F       		.uleb128 0xf
+ 379 01d2 76000000 		.4byte	0x76
+ 380 01d6 10       		.uleb128 0x10
+ 381 01d7 E5000000 		.4byte	.LASF20
+ 382 01db E5000000 		.4byte	.LASF20
+ 383 01df 05       		.byte	0x5
+ 384 01e0 2F       		.byte	0x2f
+ 385 01e1 10       		.uleb128 0x10
+ 386 01e2 A1010000 		.4byte	.LASF21
+ 387 01e6 A1010000 		.4byte	.LASF21
+ 388 01ea 06       		.byte	0x6
+ 389 01eb 2F       		.byte	0x2f
+ 390 01ec 10       		.uleb128 0x10
+ 391 01ed F1000000 		.4byte	.LASF22
+ 392 01f1 F1000000 		.4byte	.LASF22
+ 393 01f5 07       		.byte	0x7
+ 394 01f6 76       		.byte	0x76
+ 395 01f7 00       		.byte	0
+ 396              		.section	.debug_abbrev,"",%progbits
+ 397              	.Ldebug_abbrev0:
+ 398 0000 01       		.uleb128 0x1
+ 399 0001 11       		.uleb128 0x11
+ 400 0002 01       		.byte	0x1
+ 401 0003 25       		.uleb128 0x25
+ 402 0004 0E       		.uleb128 0xe
+ 403 0005 13       		.uleb128 0x13
+ 404 0006 0B       		.uleb128 0xb
+ 405 0007 03       		.uleb128 0x3
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 9
+
+
+ 406 0008 0E       		.uleb128 0xe
+ 407 0009 1B       		.uleb128 0x1b
+ 408 000a 0E       		.uleb128 0xe
+ 409 000b 55       		.uleb128 0x55
+ 410 000c 17       		.uleb128 0x17
+ 411 000d 11       		.uleb128 0x11
+ 412 000e 01       		.uleb128 0x1
+ 413 000f 10       		.uleb128 0x10
+ 414 0010 17       		.uleb128 0x17
+ 415 0011 00       		.byte	0
+ 416 0012 00       		.byte	0
+ 417 0013 02       		.uleb128 0x2
+ 418 0014 24       		.uleb128 0x24
+ 419 0015 00       		.byte	0
+ 420 0016 0B       		.uleb128 0xb
+ 421 0017 0B       		.uleb128 0xb
+ 422 0018 3E       		.uleb128 0x3e
+ 423 0019 0B       		.uleb128 0xb
+ 424 001a 03       		.uleb128 0x3
+ 425 001b 0E       		.uleb128 0xe
+ 426 001c 00       		.byte	0
+ 427 001d 00       		.byte	0
+ 428 001e 03       		.uleb128 0x3
+ 429 001f 16       		.uleb128 0x16
+ 430 0020 00       		.byte	0
+ 431 0021 03       		.uleb128 0x3
+ 432 0022 0E       		.uleb128 0xe
+ 433 0023 3A       		.uleb128 0x3a
+ 434 0024 0B       		.uleb128 0xb
+ 435 0025 3B       		.uleb128 0x3b
+ 436 0026 0B       		.uleb128 0xb
+ 437 0027 49       		.uleb128 0x49
+ 438 0028 13       		.uleb128 0x13
+ 439 0029 00       		.byte	0
+ 440 002a 00       		.byte	0
+ 441 002b 04       		.uleb128 0x4
+ 442 002c 24       		.uleb128 0x24
+ 443 002d 00       		.byte	0
+ 444 002e 0B       		.uleb128 0xb
+ 445 002f 0B       		.uleb128 0xb
+ 446 0030 3E       		.uleb128 0x3e
+ 447 0031 0B       		.uleb128 0xb
+ 448 0032 03       		.uleb128 0x3
+ 449 0033 08       		.uleb128 0x8
+ 450 0034 00       		.byte	0
+ 451 0035 00       		.byte	0
+ 452 0036 05       		.uleb128 0x5
+ 453 0037 16       		.uleb128 0x16
+ 454 0038 00       		.byte	0
+ 455 0039 03       		.uleb128 0x3
+ 456 003a 0E       		.uleb128 0xe
+ 457 003b 3A       		.uleb128 0x3a
+ 458 003c 0B       		.uleb128 0xb
+ 459 003d 3B       		.uleb128 0x3b
+ 460 003e 05       		.uleb128 0x5
+ 461 003f 49       		.uleb128 0x49
+ 462 0040 13       		.uleb128 0x13
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 10
+
+
+ 463 0041 00       		.byte	0
+ 464 0042 00       		.byte	0
+ 465 0043 06       		.uleb128 0x6
+ 466 0044 2E       		.uleb128 0x2e
+ 467 0045 00       		.byte	0
+ 468 0046 3F       		.uleb128 0x3f
+ 469 0047 19       		.uleb128 0x19
+ 470 0048 03       		.uleb128 0x3
+ 471 0049 0E       		.uleb128 0xe
+ 472 004a 3A       		.uleb128 0x3a
+ 473 004b 0B       		.uleb128 0xb
+ 474 004c 3B       		.uleb128 0x3b
+ 475 004d 0B       		.uleb128 0xb
+ 476 004e 11       		.uleb128 0x11
+ 477 004f 01       		.uleb128 0x1
+ 478 0050 12       		.uleb128 0x12
+ 479 0051 06       		.uleb128 0x6
+ 480 0052 40       		.uleb128 0x40
+ 481 0053 18       		.uleb128 0x18
+ 482 0054 9742     		.uleb128 0x2117
+ 483 0056 19       		.uleb128 0x19
+ 484 0057 00       		.byte	0
+ 485 0058 00       		.byte	0
+ 486 0059 07       		.uleb128 0x7
+ 487 005a 2E       		.uleb128 0x2e
+ 488 005b 01       		.byte	0x1
+ 489 005c 3F       		.uleb128 0x3f
+ 490 005d 19       		.uleb128 0x19
+ 491 005e 03       		.uleb128 0x3
+ 492 005f 0E       		.uleb128 0xe
+ 493 0060 3A       		.uleb128 0x3a
+ 494 0061 0B       		.uleb128 0xb
+ 495 0062 3B       		.uleb128 0x3b
+ 496 0063 0B       		.uleb128 0xb
+ 497 0064 27       		.uleb128 0x27
+ 498 0065 19       		.uleb128 0x19
+ 499 0066 11       		.uleb128 0x11
+ 500 0067 01       		.uleb128 0x1
+ 501 0068 12       		.uleb128 0x12
+ 502 0069 06       		.uleb128 0x6
+ 503 006a 40       		.uleb128 0x40
+ 504 006b 18       		.uleb128 0x18
+ 505 006c 9742     		.uleb128 0x2117
+ 506 006e 19       		.uleb128 0x19
+ 507 006f 01       		.uleb128 0x1
+ 508 0070 13       		.uleb128 0x13
+ 509 0071 00       		.byte	0
+ 510 0072 00       		.byte	0
+ 511 0073 08       		.uleb128 0x8
+ 512 0074 05       		.uleb128 0x5
+ 513 0075 00       		.byte	0
+ 514 0076 03       		.uleb128 0x3
+ 515 0077 0E       		.uleb128 0xe
+ 516 0078 3A       		.uleb128 0x3a
+ 517 0079 0B       		.uleb128 0xb
+ 518 007a 3B       		.uleb128 0x3b
+ 519 007b 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 11
+
+
+ 520 007c 49       		.uleb128 0x49
+ 521 007d 13       		.uleb128 0x13
+ 522 007e 02       		.uleb128 0x2
+ 523 007f 17       		.uleb128 0x17
+ 524 0080 00       		.byte	0
+ 525 0081 00       		.byte	0
+ 526 0082 09       		.uleb128 0x9
+ 527 0083 898201   		.uleb128 0x4109
+ 528 0086 00       		.byte	0
+ 529 0087 11       		.uleb128 0x11
+ 530 0088 01       		.uleb128 0x1
+ 531 0089 31       		.uleb128 0x31
+ 532 008a 13       		.uleb128 0x13
+ 533 008b 00       		.byte	0
+ 534 008c 00       		.byte	0
+ 535 008d 0A       		.uleb128 0xa
+ 536 008e 898201   		.uleb128 0x4109
+ 537 0091 01       		.byte	0x1
+ 538 0092 11       		.uleb128 0x11
+ 539 0093 01       		.uleb128 0x1
+ 540 0094 31       		.uleb128 0x31
+ 541 0095 13       		.uleb128 0x13
+ 542 0096 01       		.uleb128 0x1
+ 543 0097 13       		.uleb128 0x13
+ 544 0098 00       		.byte	0
+ 545 0099 00       		.byte	0
+ 546 009a 0B       		.uleb128 0xb
+ 547 009b 8A8201   		.uleb128 0x410a
+ 548 009e 00       		.byte	0
+ 549 009f 02       		.uleb128 0x2
+ 550 00a0 18       		.uleb128 0x18
+ 551 00a1 9142     		.uleb128 0x2111
+ 552 00a3 18       		.uleb128 0x18
+ 553 00a4 00       		.byte	0
+ 554 00a5 00       		.byte	0
+ 555 00a6 0C       		.uleb128 0xc
+ 556 00a7 898201   		.uleb128 0x4109
+ 557 00aa 01       		.byte	0x1
+ 558 00ab 11       		.uleb128 0x11
+ 559 00ac 01       		.uleb128 0x1
+ 560 00ad 31       		.uleb128 0x31
+ 561 00ae 13       		.uleb128 0x13
+ 562 00af 00       		.byte	0
+ 563 00b0 00       		.byte	0
+ 564 00b1 0D       		.uleb128 0xd
+ 565 00b2 2E       		.uleb128 0x2e
+ 566 00b3 01       		.byte	0x1
+ 567 00b4 3F       		.uleb128 0x3f
+ 568 00b5 19       		.uleb128 0x19
+ 569 00b6 03       		.uleb128 0x3
+ 570 00b7 0E       		.uleb128 0xe
+ 571 00b8 3A       		.uleb128 0x3a
+ 572 00b9 0B       		.uleb128 0xb
+ 573 00ba 3B       		.uleb128 0x3b
+ 574 00bb 0B       		.uleb128 0xb
+ 575 00bc 27       		.uleb128 0x27
+ 576 00bd 19       		.uleb128 0x19
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 12
+
+
+ 577 00be 49       		.uleb128 0x49
+ 578 00bf 13       		.uleb128 0x13
+ 579 00c0 8701     		.uleb128 0x87
+ 580 00c2 19       		.uleb128 0x19
+ 581 00c3 11       		.uleb128 0x11
+ 582 00c4 01       		.uleb128 0x1
+ 583 00c5 12       		.uleb128 0x12
+ 584 00c6 06       		.uleb128 0x6
+ 585 00c7 40       		.uleb128 0x40
+ 586 00c8 18       		.uleb128 0x18
+ 587 00c9 9742     		.uleb128 0x2117
+ 588 00cb 19       		.uleb128 0x19
+ 589 00cc 01       		.uleb128 0x1
+ 590 00cd 13       		.uleb128 0x13
+ 591 00ce 00       		.byte	0
+ 592 00cf 00       		.byte	0
+ 593 00d0 0E       		.uleb128 0xe
+ 594 00d1 34       		.uleb128 0x34
+ 595 00d2 00       		.byte	0
+ 596 00d3 03       		.uleb128 0x3
+ 597 00d4 0E       		.uleb128 0xe
+ 598 00d5 3A       		.uleb128 0x3a
+ 599 00d6 0B       		.uleb128 0xb
+ 600 00d7 3B       		.uleb128 0x3b
+ 601 00d8 05       		.uleb128 0x5
+ 602 00d9 49       		.uleb128 0x49
+ 603 00da 13       		.uleb128 0x13
+ 604 00db 3F       		.uleb128 0x3f
+ 605 00dc 19       		.uleb128 0x19
+ 606 00dd 3C       		.uleb128 0x3c
+ 607 00de 19       		.uleb128 0x19
+ 608 00df 00       		.byte	0
+ 609 00e0 00       		.byte	0
+ 610 00e1 0F       		.uleb128 0xf
+ 611 00e2 35       		.uleb128 0x35
+ 612 00e3 00       		.byte	0
+ 613 00e4 49       		.uleb128 0x49
+ 614 00e5 13       		.uleb128 0x13
+ 615 00e6 00       		.byte	0
+ 616 00e7 00       		.byte	0
+ 617 00e8 10       		.uleb128 0x10
+ 618 00e9 2E       		.uleb128 0x2e
+ 619 00ea 00       		.byte	0
+ 620 00eb 3F       		.uleb128 0x3f
+ 621 00ec 19       		.uleb128 0x19
+ 622 00ed 3C       		.uleb128 0x3c
+ 623 00ee 19       		.uleb128 0x19
+ 624 00ef 6E       		.uleb128 0x6e
+ 625 00f0 0E       		.uleb128 0xe
+ 626 00f1 03       		.uleb128 0x3
+ 627 00f2 0E       		.uleb128 0xe
+ 628 00f3 3A       		.uleb128 0x3a
+ 629 00f4 0B       		.uleb128 0xb
+ 630 00f5 3B       		.uleb128 0x3b
+ 631 00f6 0B       		.uleb128 0xb
+ 632 00f7 00       		.byte	0
+ 633 00f8 00       		.byte	0
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 13
+
+
+ 634 00f9 00       		.byte	0
+ 635              		.section	.debug_loc,"",%progbits
+ 636              	.Ldebug_loc0:
+ 637              	.LLST0:
+ 638 0000 00000000 		.4byte	.LVL0
+ 639 0004 05000000 		.4byte	.LVL1-1
+ 640 0008 0100     		.2byte	0x1
+ 641 000a 50       		.byte	0x50
+ 642 000b 05000000 		.4byte	.LVL1-1
+ 643 000f 1A000000 		.4byte	.LFE65
+ 644 0013 0400     		.2byte	0x4
+ 645 0015 F3       		.byte	0xf3
+ 646 0016 01       		.uleb128 0x1
+ 647 0017 50       		.byte	0x50
+ 648 0018 9F       		.byte	0x9f
+ 649 0019 00000000 		.4byte	0
+ 650 001d 00000000 		.4byte	0
+ 651              	.LLST1:
+ 652 0021 00000000 		.4byte	.LVL7
+ 653 0025 05000000 		.4byte	.LVL8-1
+ 654 0029 0100     		.2byte	0x1
+ 655 002b 50       		.byte	0x50
+ 656 002c 05000000 		.4byte	.LVL8-1
+ 657 0030 1A000000 		.4byte	.LFE66
+ 658 0034 0400     		.2byte	0x4
+ 659 0036 F3       		.byte	0xf3
+ 660 0037 01       		.uleb128 0x1
+ 661 0038 50       		.byte	0x50
+ 662 0039 9F       		.byte	0x9f
+ 663 003a 00000000 		.4byte	0
+ 664 003e 00000000 		.4byte	0
+ 665              		.section	.debug_aranges,"",%progbits
+ 666 0000 34000000 		.4byte	0x34
+ 667 0004 0200     		.2byte	0x2
+ 668 0006 00000000 		.4byte	.Ldebug_info0
+ 669 000a 04       		.byte	0x4
+ 670 000b 00       		.byte	0
+ 671 000c 0000     		.2byte	0
+ 672 000e 0000     		.2byte	0
+ 673 0010 00000000 		.4byte	.LFB64
+ 674 0014 02000000 		.4byte	.LFE64-.LFB64
+ 675 0018 00000000 		.4byte	.LFB65
+ 676 001c 1A000000 		.4byte	.LFE65-.LFB65
+ 677 0020 00000000 		.4byte	.LFB63
+ 678 0024 12000000 		.4byte	.LFE63-.LFB63
+ 679 0028 00000000 		.4byte	.LFB66
+ 680 002c 1A000000 		.4byte	.LFE66-.LFB66
+ 681 0030 00000000 		.4byte	0
+ 682 0034 00000000 		.4byte	0
+ 683              		.section	.debug_ranges,"",%progbits
+ 684              	.Ldebug_ranges0:
+ 685 0000 00000000 		.4byte	.LFB64
+ 686 0004 02000000 		.4byte	.LFE64
+ 687 0008 00000000 		.4byte	.LFB65
+ 688 000c 1A000000 		.4byte	.LFE65
+ 689 0010 00000000 		.4byte	.LFB63
+ 690 0014 12000000 		.4byte	.LFE63
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 14
+
+
+ 691 0018 00000000 		.4byte	.LFB66
+ 692 001c 1A000000 		.4byte	.LFE66
+ 693 0020 00000000 		.4byte	0
+ 694 0024 00000000 		.4byte	0
+ 695              		.section	.debug_line,"",%progbits
+ 696              	.Ldebug_line0:
+ 697 0000 CC010000 		.section	.debug_str,"MS",%progbits,1
+ 697      02007701 
+ 697      00000201 
+ 697      FB0E0D00 
+ 697      01010101 
+ 698              	.LASF6:
+ 699 0000 6C6F6E67 		.ascii	"long long int\000"
+ 699      206C6F6E 
+ 699      6720696E 
+ 699      7400
+ 700              	.LASF3:
+ 701 000e 73686F72 		.ascii	"short unsigned int\000"
+ 701      7420756E 
+ 701      7369676E 
+ 701      65642069 
+ 701      6E7400
+ 702              	.LASF8:
+ 703 0021 756E7369 		.ascii	"unsigned int\000"
+ 703      676E6564 
+ 703      20696E74 
+ 703      00
+ 704              	.LASF26:
+ 705 002e 73746570 		.ascii	"stepper_init\000"
+ 705      7065725F 
+ 705      696E6974 
+ 705      00
+ 706              	.LASF24:
+ 707 003b 6D61696E 		.ascii	"main.c\000"
+ 707      2E6300
+ 708              	.LASF27:
+ 709 0042 6D61696E 		.ascii	"main\000"
+ 709      00
+ 710              	.LASF23:
+ 711 0047 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 711      43313120 
+ 711      352E342E 
+ 711      31203230 
+ 711      31363036 
+ 712 007a 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 712      20726576 
+ 712      6973696F 
+ 712      6E203233 
+ 712      37373135 
+ 713 00ad 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 713      66756E63 
+ 713      74696F6E 
+ 713      2D736563 
+ 713      74696F6E 
+ 714              	.LASF17:
+ 715 00d5 73746570 		.ascii	"stepper_forward\000"
+ 715      7065725F 
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 15
+
+
+ 715      666F7277 
+ 715      61726400 
+ 716              	.LASF20:
+ 717 00e5 53746570 		.ascii	"Steps_Write\000"
+ 717      735F5772 
+ 717      69746500 
+ 718              	.LASF22:
+ 719 00f1 43794465 		.ascii	"CyDelay\000"
+ 719      6C617900 
+ 720              	.LASF11:
+ 721 00f9 75696E74 		.ascii	"uint8\000"
+ 721      3800
+ 722              	.LASF5:
+ 723 00ff 6C6F6E67 		.ascii	"long unsigned int\000"
+ 723      20756E73 
+ 723      69676E65 
+ 723      6420696E 
+ 723      7400
+ 724              	.LASF7:
+ 725 0111 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 725      206C6F6E 
+ 725      6720756E 
+ 725      7369676E 
+ 725      65642069 
+ 726              	.LASF25:
+ 727 0128 433A5C55 		.ascii	"C:\\Users\\Chris\\Documents\\PSoC Creator\\Stepperm"
+ 727      73657273 
+ 727      5C436872 
+ 727      69735C44 
+ 727      6F63756D 
+ 728 0156 6F746F72 		.ascii	"otor_bipolar\\Steppermotor_bipolar.cydsn\000"
+ 728      5F626970 
+ 728      6F6C6172 
+ 728      5C537465 
+ 728      70706572 
+ 729              	.LASF18:
+ 730 017e 73746570 		.ascii	"stepper_reverse\000"
+ 730      7065725F 
+ 730      72657665 
+ 730      72736500 
+ 731              	.LASF1:
+ 732 018e 756E7369 		.ascii	"unsigned char\000"
+ 732      676E6564 
+ 732      20636861 
+ 732      7200
+ 733              	.LASF14:
+ 734 019c 63686172 		.ascii	"char\000"
+ 734      00
+ 735              	.LASF21:
+ 736 01a1 53746570 		.ascii	"Stepper_control_Write\000"
+ 736      7065725F 
+ 736      636F6E74 
+ 736      726F6C5F 
+ 736      57726974 
+ 737              	.LASF4:
+ 738 01b7 6C6F6E67 		.ascii	"long int\000"
+ 738      20696E74 
+ARM GAS  C:\Users\Chris\AppData\Local\Temp\ccuA5Sdf.s 			page 16
+
+
+ 738      00
+ 739              	.LASF13:
+ 740 01c0 646F7562 		.ascii	"double\000"
+ 740      6C6500
+ 741              	.LASF28:
+ 742 01c7 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 742      52784275 
+ 742      66666572 
+ 742      00
+ 743              	.LASF0:
+ 744 01d4 7369676E 		.ascii	"signed char\000"
+ 744      65642063 
+ 744      68617200 
+ 745              	.LASF15:
+ 746 01e0 6C6F6E67 		.ascii	"long double\000"
+ 746      20646F75 
+ 746      626C6500 
+ 747              	.LASF9:
+ 748 01ec 5F5F696E 		.ascii	"__int32_t\000"
+ 748      7433325F 
+ 748      7400
+ 749              	.LASF12:
+ 750 01f6 666C6F61 		.ascii	"float\000"
+ 750      7400
+ 751              	.LASF2:
+ 752 01fc 73686F72 		.ascii	"short int\000"
+ 752      7420696E 
+ 752      7400
+ 753              	.LASF10:
+ 754 0206 696E7433 		.ascii	"int32_t\000"
+ 754      325F7400 
+ 755              	.LASF16:
+ 756 020e 73697A65 		.ascii	"sizetype\000"
+ 756      74797065 
+ 756      00
+ 757              	.LASF19:
+ 758 0217 73746570 		.ascii	"steps\000"
+ 758      7300
+ 759              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
